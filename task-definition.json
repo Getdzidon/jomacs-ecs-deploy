@@ -1,56 +1,90 @@
 {
-    "containerDefinitions": [
+  "taskDefinitionArn": "arn:aws:ecs:eu-central-1:471112610438:task-definition/jomacs-ecs-deploy-td:1",
+  "containerDefinitions": [
+    {
+      "name": "jomacs-ecs-container",
+      "image": "471112610438.dkr.ecr.eu-central-1.amazonaws.com/getdzidon/jomacs-ecs-deploy:latest",
+      "cpu": 1024,
+      "memory": 3072,
+      "memoryReservation": 1024,
+      "portMappings": [
         {
-            "name": "test2-container",
-            "image": "471112610438.dkr.ecr.eu-central-1.amazonaws.com/test-ecs-deploy-repo:latest",
-            "cpu": 1024,
-            "memory": 3072,
-            "memoryReservation": 1024,
-            "portMappings": [
-                {
-                    "name": "test2-container-80-tcp",
-                    "containerPort": 80,
-                    "hostPort": 80,
-                    "protocol": "tcp",
-                    "appProtocol": "http"
-                }
-            ],
-            "essential": true,
-            "environment": [],
-            "environmentFiles": [],
-            "mountPoints": [],
-            "volumesFrom": [],
-            "ulimits": [],
-            "logConfiguration": {
-                "logDriver": "awslogs",
-                "options": {
-                    "awslogs-group": "/ecs/test2-task-definition",
-                    "mode": "non-blocking",
-                    "awslogs-create-group": "true",
-                    "max-buffer-size": "25m",
-                    "awslogs-region": "eu-central-1",
-                    "awslogs-stream-prefix": "ecs"
-                },
-                "secretOptions": []
-            },
-            "systemControls": []
+          "name": "jomacs-ecs-container-80-tcp",
+          "containerPort": 80,
+          "hostPort": 80,
+          "protocol": "tcp",
+          "appProtocol": "http"
         }
-    ],
-    "family": "test2-task-definition",
-    "taskRoleArn": "arn:aws:iam::471112610438:role/ecsTaskExecutionRole",
-    "executionRoleArn": "arn:aws:iam::471112610438:role/ecsTaskExecutionRole",
-    "networkMode": "awsvpc",
-    "volumes": [],
-    "placementConstraints": [],
-    "requiresCompatibilities": [
-        "FARGATE"
-    ],
-    "cpu": "1024",
-    "memory": "3072",
-    "runtimePlatform": {
-        "cpuArchitecture": "X86_64",
-        "operatingSystemFamily": "LINUX"
+      ],
+      "essential": true,
+      "environment": [],
+      "environmentFiles": [],
+      "mountPoints": [],
+      "volumesFrom": [],
+      "ulimits": [],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/jomacs-ecs-deploy-td",
+          "awslogs-create-group": "true",
+          "awslogs-region": "eu-central-1",
+          "awslogs-stream-prefix": "ecs"
+        },
+        "secretOptions": []
+      },
+      "systemControls": []
+    }
+  ],
+  "family": "jomacs-ecs-deploy-td",
+  "taskRoleArn": "arn:aws:iam::471112610438:role/ecsTaskExecutionRole",
+  "executionRoleArn": "arn:aws:iam::471112610438:role/ecsTaskExecutionRole",
+  "networkMode": "awsvpc",
+  "revision": 1,
+  "volumes": [],
+  "status": "ACTIVE",
+  "requiresAttributes": [
+    {
+      "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
     },
-    "enableFaultInjection": false,
-    "tags": []
+    {
+      "name": "ecs.capability.execution-role-awslogs"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.ecr-auth"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.task-iam-role"
+    },
+    {
+      "name": "ecs.capability.execution-role-ecr-pull"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+    },
+    {
+      "name": "ecs.capability.task-eni"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
+    }
+  ],
+  "placementConstraints": [],
+  "compatibilities": ["EC2", "MANAGED_INSTANCES", "FARGATE"],
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "1024",
+  "memory": "3072",
+  "runtimePlatform": {
+    "cpuArchitecture": "X86_64",
+    "operatingSystemFamily": "LINUX"
+  },
+  "registeredAt": "2026-02-28T21:47:49.747Z",
+  "registeredBy": "arn:aws:iam::471112610438:root",
+  "enableFaultInjection": false,
+  "tags": []
 }
